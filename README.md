@@ -46,7 +46,7 @@ Track work across the four RHDH Jira projects.
 
 ### Meta
 
-- **[skill-maker](./skills/skill-maker/SKILL.md)** — Create new skills following the [Agent Skills open standard](https://agentskills.io/specification). Interviews you about scope and edge cases before drafting.
+- **[skill-maker](./skills/skill-maker/SKILL.md)** — Create new skills or consolidate existing ones following the [Agent Skills open standard](https://agentskills.io/specification). Interviews you about scope and edge cases before drafting.
 
 ## Getting Started
 

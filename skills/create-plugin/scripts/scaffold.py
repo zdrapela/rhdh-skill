@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -41,8 +42,7 @@ EXIT_FAILURE = 1
 EXIT_USAGE = 2
 
 # ANSI colors (disabled when not a TTY or NO_COLOR is set)
-import os as _os
-_no_color = _os.environ.get("NO_COLOR") is not None
+_no_color = os.environ.get("NO_COLOR") is not None
 _is_tty = sys.stderr.isatty() and not _no_color
 
 
@@ -328,7 +328,7 @@ def scaffold(args: argparse.Namespace) -> dict:
         log(f"  1. cd {plugin_path}")
         log(f"  2. Implement {'plugin logic in src/plugin.ts' if is_backend else 'components in src/'}")
         if not is_backend and with_theme:
-            log(f"  3. Configure theme in dev/index.tsx")
+            log("  3. Configure theme in dev/index.tsx")
         log(f"  {'4' if (not is_backend and with_theme) else '3'}. yarn build")
         log(
             f"  {'5' if (not is_backend and with_theme) else '4'}."

@@ -78,7 +78,7 @@ When consolidating near-identical scripts:
 This is where consolidations break. Search the **entire project** for old skill names:
 
 ```bash
-grep -rn "old-skill-name" --include="*.md" --include="*.py" --include="*.json" --include="*.yaml" .
+grep -rn "old-skill-name" --include="*.md" --include="*.py" --include="*.json" --include="*.yaml" --exclude-dir=.git .
 ```
 
 **Must update:**
