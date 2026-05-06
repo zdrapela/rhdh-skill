@@ -137,7 +137,7 @@ Format as Slack mrkdwn and offer to post to the team channel. Use `slack_convers
   "scope_creep": {"count": 2, "sp": 4},
   "completion_rate": 86,
   "per_member": [
-    {"name": "Jon Koops", "closed": 4, "sp_done": 8, "carried": 1, "sp_carry": 3}
+    {"name": "Allison Hill", "closed": 4, "sp_done": 8, "carried": 1, "sp_carry": 3}
   ],
   "epic_progress": [
     {"key": "RHIDP-100", "summary": "Dynamic plugins v2", "closed_this_sprint": 3, "total": 8, "pct_before": 37, "pct_after": 75}

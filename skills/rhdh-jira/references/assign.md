@@ -161,17 +161,17 @@ Callers (hygiene dashboard, refinement workflow) consume this structure:
       "key": "RHIDP-1234",
       "summary": "Issue summary text",
       "priority": "Major",
-      "proposed_assignee": "Jon Koops",
-      "proposed_account_id": "712020:71f08212-...",
+      "proposed_assignee": "Allison Hill",
+      "proposed_account_id": "712020:9974d75b-...",
       "score": 14,
       "rationale": "Top expertise in plugins (12/50 issues). Capacity: 5 issues / 13 SP. Currently working on RHIDP-1200 (related component).",
-      "runner_up": "Hope Hadfield (score: 12)",
+      "runner_up": "Noah Rhodes (score: 12)",
       "signals": ["context_proximity: RHIDP-1200 shares 'plugins' component"]
     }
   ],
   "warnings": [
-    "Bus factor: Jon Koops owns 70% of 'plugins' issues. Consider spreading.",
-    "Nick Boldt overloaded (12 open sprint issues) — excluded from non-critical."
+    "Bus factor: Allison Hill owns 70% of 'plugins' issues. Consider spreading.",
+    "Daniel Wagner overloaded (12 open sprint issues) — excluded from non-critical."
   ]
 }
 ```
@@ -185,14 +185,14 @@ Mode: **{mode}** | Roster: {roster_size} members | Issues analyzed: {count}
 
 | # | Issue | P | Summary | Recommended | Score | Rationale |
 |---|-------|---|---------|-------------|-------|-----------|
-| 1 | [RHIDP-1234](url) | Major | Summary | Jon Koops | 14 | plugins (12/50), 5 issues/13 SP, proximity: RHIDP-1200 |
+| 1 | [RHIDP-1234](url) | Major | Summary | Allison Hill | 14 | plugins (12/50), 5 issues/13 SP, proximity: RHIDP-1200 |
 
 **Signals:**
-- Bus factor: Jon Koops owns 70% of 'plugins'. Consider Frank Kong (3/50, 5 issues/8 SP).
-- Growth opportunity for Kashish Mittal in 'catalog' — 2 prior issues.
+- Bus factor: Allison Hill owns 70% of 'plugins'. Consider Angie Henderson (3/50, 5 issues/8 SP).
+- Growth opportunity for Cristian Santos in 'catalog' — 2 prior issues.
 
 **Warnings:**
-- Nick Boldt excluded (12 open sprint issues, overloaded).
+- Daniel Wagner excluded (12 open sprint issues, overloaded).
 ```
 
 ## Assignment
@@ -241,9 +241,9 @@ After all assignments, summarize:
 
 ```markdown
 ## Assignment Results
-- ✅ RHIDP-1234 → Jon Koops
-- ✅ RHIDP-5678 → Hope Hadfield
-- ❌ RHIDP-9012 → Frank Kong (403: no edit permission)
+- ✅ RHIDP-1234 → Allison Hill
+- ✅ RHIDP-5678 → Noah Rhodes
+- ❌ RHIDP-9012 → Angie Henderson (403: no edit permission)
 ```
 
 ## Error Handling

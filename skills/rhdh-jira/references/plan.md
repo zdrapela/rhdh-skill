@@ -146,14 +146,14 @@ Note: "Retro action items to consider for this sprint."
     "trend": "accelerating"
   },
   "capacity": [
-    {"name": "Jon Koops", "carryover_items": 2, "carryover_sp": 8, "open": 5, "sp_load": 13, "overloaded": false}
+    {"name": "Allison Hill", "carryover_items": 2, "carryover_sp": 8, "open": 5, "sp_load": 13, "overloaded": false}
   ],
   "available_sp": 5,
   "ready_queue": [
     {"key": "...", "summary": "...", "priority": "Critical", "sp": 3, "parent_epic": "RHIDP-100"}
   ],
   "fill_suggestions": [
-    {"key": "RHIDP-5678", "proposed_assignee": "Hope Hadfield", "score": 12, "rationale": "..."}
+    {"key": "RHIDP-5678", "proposed_assignee": "Noah Rhodes", "score": 12, "rationale": "..."}
   ],
   "critical_customer_bugs": [],
   "ci_items": []

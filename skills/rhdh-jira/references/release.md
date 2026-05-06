@@ -209,7 +209,7 @@ Synthesize a 1-paragraph risk assessment:
       "key": "RHDHPLAN-400",
       "summary": "...",
       "status": "In Progress",
-      "owner": "Hope Hadfield",
+      "owner": "Noah Rhodes",
       "team": "COPE",
       "size": "M",
       "stretch": false,
@@ -223,7 +223,7 @@ Synthesize a 1-paragraph risk assessment:
     {"source": "RHIDP-200", "source_team": "COPE", "target": "RHIDP-300", "target_team": "Install Method", "target_status": "New", "risk": "high"}
   ],
   "blocker_bugs": [
-    {"key": "RHDHBUGS-3100", "summary": "...", "assignee": "Martin Polasko", "days_stale": 5}
+    {"key": "RHDHBUGS-3100", "summary": "...", "assignee": "Connie Lawrence", "days_stale": 5}
   ],
   "stretch_features": ["RHDHPLAN-410"],
   "pm_blockers": ["RHDHPLAN-402"],

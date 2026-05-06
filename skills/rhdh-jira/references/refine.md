@@ -227,7 +227,7 @@ Checked: {issues_checked} issues | Findings: {issues_with_findings} issues
 
 | # | Issue | Last comment | By | Days ago |
 |---|-------|--------------|----|----------|
-| 1 | [RHIDP-5678](url) | "Can we use the new API?" | Jon Koops | 7 |
+| 1 | [RHIDP-5678](url) | "Can we use the new API?" | Allison Hill | 7 |
 
 ### ⏰ Stale Issues ({count})
 
