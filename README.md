@@ -99,9 +99,12 @@ npx skills add ./path/to/rhdh-skill
 ## Development
 
 ```bash
-uv sync --extra dev    # Install dev dependencies
-uv run pytest          # Run tests (245 tests)
+uv sync --extra dev                  # Install dev dependencies
+git config core.hooksPath .githooks  # Enable pre-commit hooks (one-time)
+uv run pytest                        # Run tests
 ```
+
+The `core.hooksPath` setting points git at the checked-in `.githooks/` directory. If `pre-commit` is installed, linting and tests run automatically on every commit. If not, commits proceed with a warning.
 
 See [AGENTS.md](./AGENTS.md) for contribution guidelines and architectural decisions.
 
