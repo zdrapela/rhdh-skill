@@ -271,6 +271,7 @@ Before presenting the final skill, verify against this checklist:
 
 ### Quality
 - [ ] No time-sensitive information (URLs to specific versions, dates that will go stale)
+- [ ] Examples use fake data where possible (emails, names, tokens) — see `spec-guide.md` → Fake Data in Examples
 - [ ] Consistent terminology throughout
 - [ ] Concrete examples included for non-obvious workflows
 - [ ] Absolute bans defined for patterns that are always wrong

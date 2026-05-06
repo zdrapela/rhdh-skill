@@ -115,6 +115,32 @@ When a skill offers multiple ways to accomplish similar tasks (CLI, API, library
 - Each reference file explains when to use *it* vs alternatives
 - Default to the simplest approach — escalate only when it can't handle the task
 
+## Fake Data in Examples
+
+Skill examples should use realistic but fake data wherever possible. Real credentials, real user emails, and real PII should never appear in skill files that may be committed to version control.
+
+Use [Faker](https://github.com/joke2k/faker) to generate realistic fake data when needed.
+
+### What to fake
+
+- **User data**: emails, display names, account IDs
+- **Credentials**: API tokens, passwords (use obviously fake placeholders like `your-api-token`)
+- **Issue/ticket keys in generic examples**: `PROJ-123` instead of real issue keys
+
+### What must stay real
+
+Some data must be real or the skill breaks:
+
+- **Instance URLs** that the skill connects to (e.g., `redhat.atlassian.net`)
+- **Project keys** when the skill is scoped to specific projects (e.g., `RHIDP`, `RHDHPLAN`)
+- **Cloud/tenant IDs** when required by API calls — but include a discovery method so others can find their own
+- **Custom field IDs** (`customfield_10028`) that are instance-specific
+- **API endpoint paths** (`/rest/api/3/issue/{key}`)
+
+### Rule of thumb
+
+If changing the value would cause a runtime error against the target system, it must be real. If it's just illustrative, fake it. When in doubt, use a placeholder format that's obviously not real: `your-email@example.com`, `YOUR_API_TOKEN`, `TEAM_ID`.
+
 ## Best Practices
 
 Full guide: https://agentskills.io/skill-creation/best-practices
