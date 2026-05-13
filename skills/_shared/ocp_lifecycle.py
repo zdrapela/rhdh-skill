@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """OCP lifecycle phase classification.
 
-Replaces the ocp-lifecycle.jq filter. Classifies OCP versions from the
-Red Hat Product Life Cycles API into lifecycle phases (Full Support,
-Maintenance, EUS, End of life).
+Classifies OCP versions from the Red Hat Product Life Cycles API into
+lifecycle phases (Full Support, Maintenance, EUS, End of life).
 
 This module is the single source of truth for OCP phase classification.
 It is used by:
@@ -12,24 +11,14 @@ It is used by:
 
 Usage:
     from ocp_lifecycle import classify_ocp_versions
-    versions = classify_ocp_versions(api_response, "2025-05-13")
+    from redhat_lifecycle import fetch_api
+    api_data = fetch_api("Red Hat OpenShift Container Platform")
+    versions = classify_ocp_versions(api_data, "2025-05-13")
 """
 
 import re
 
-
-def _is_date(val):
-    """Return True if val is a YYYY-MM-DD date string."""
-    if not val or not isinstance(val, str):
-        return False
-    return bool(re.match(r"^\d{4}-\d{2}-\d{2}", val))
-
-
-def _to_date(val):
-    """Extract YYYY-MM-DD from a date string, or None."""
-    if _is_date(val):
-        return val[:10]
-    return None
+from redhat_lifecycle import _is_date, _to_date
 
 
 def classify_ocp_versions(api_data, today):
