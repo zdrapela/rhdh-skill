@@ -19,7 +19,8 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
-from configured_versions import print_configured_versions, resolve_repo_root
+from rhdh_lifecycle.configured_versions import print_configured_versions
+from rhdh_lifecycle.repo import resolve_repo_root
 
 EKS_DOCS_URL = (
     "https://raw.githubusercontent.com/awsdocs/amazon-eks-user-guide"

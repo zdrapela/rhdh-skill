@@ -1,1 +1,1 @@
-"""RHDH lifecycle data from external APIs (Red Hat, endoflife.date)."""
+"""RHDH lifecycle data and openshift/release CI config access."""

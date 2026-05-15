@@ -63,4 +63,5 @@ This regenerates Prow job configs in `ci-operator/jobs/` and `zz_generated_metad
 
 ## Related Skills
 
-- **`lifecycle`**: Check version lifecycle before adding/removing OCP versions or K8s platforms
+- **`lifecycle`**: Provides repo resolution, YAML I/O, and lifecycle data.
+  The `rhdh_prow` package delegates to `rhdh_lifecycle` for shared utilities.

@@ -49,6 +49,20 @@ All scripts support `--help` for usage details and `--json` for structured outpu
 | `scripts/check_gke_lifecycle.py` | GKE K8s version lifecycle |
 | `scripts/check_pg_lifecycle.py` | PostgreSQL lifecycle across cloud providers |
 
+## Library (`rhdh_lifecycle` package)
+
+Shared utilities used by both lifecycle and prow skills:
+
+| Module | Purpose |
+|--------|---------|
+| `rhdh_lifecycle.repo` | Resolve openshift/release repository root (local or remote) |
+| `rhdh_lifecycle.yaml` | Read and parse YAML files from openshift/release |
+| `rhdh_lifecycle.configured_versions` | Print configured K8s versions per branch |
+| `rhdh_lifecycle.redhat` | Red Hat Product Life Cycles API client |
+| `rhdh_lifecycle.ocp` | OCP version phase classification |
+| `rhdh_lifecycle.rhdh` | RHDH release lifecycle data |
+| `rhdh_lifecycle.pg` | PostgreSQL lifecycle across cloud providers |
+
 ## Related Skills
 
 - **`prow`**: Manage Prow CI job configurations for RHDH in openshift/release

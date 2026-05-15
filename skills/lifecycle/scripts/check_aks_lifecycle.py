@@ -18,7 +18,8 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
-from configured_versions import print_configured_versions, resolve_repo_root
+from rhdh_lifecycle.configured_versions import print_configured_versions
+from rhdh_lifecycle.repo import resolve_repo_root
 
 AKS_API_URL = "https://releases.aks.azure.com/parsed_data.json"
 EOL_API_URL = "https://endoflife.date/api/azure-kubernetes-service.json"

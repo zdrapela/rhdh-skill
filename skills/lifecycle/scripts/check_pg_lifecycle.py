@@ -18,7 +18,7 @@ import json
 import sys
 from datetime import datetime, timezone
 
-from pg_lifecycle import fetch_pg_lifecycle
+from rhdh_lifecycle.pg import fetch_pg_lifecycle
 
 
 def main(argv=None):

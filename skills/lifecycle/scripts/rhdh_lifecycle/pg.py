@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """PostgreSQL lifecycle data from endoflife.date.
 
 Aggregates PostgreSQL version lifecycle from three providers:
@@ -7,7 +6,7 @@ Aggregates PostgreSQL version lifecycle from three providers:
   - Azure Database for PostgreSQL (endoflife.date/api/azure-database-for-postgresql.json)
 
 Usage:
-    from pg_lifecycle import fetch_pg_lifecycle
+    from rhdh_lifecycle.pg import fetch_pg_lifecycle
     versions = fetch_pg_lifecycle()
 """
 
