@@ -73,9 +73,9 @@ The `<intake>` and `<routing>` tags form a natural pair. Keep them adjacent:
 <intake>
 ## What would you like to do?
 
-1. **Create an issue** — New feature, epic, story, task, or bug
-2. **Refine an issue** — Size, complete fields, challenge scope
-3. **Plan the sprint** — Capacity, assignments, sprint goals
+1. **Command A** — Short description of first option
+2. **Command B** — Short description of second option
+3. **Command C** — Short description of third option
 
 **Wait for response before proceeding.**
 </intake>
@@ -83,9 +83,9 @@ The `<intake>` and `<routing>` tags form a natural pair. Keep them adjacent:
 <routing>
 | Response | Workflow |
 |----------|----------|
-| 1, "create", "new issue" | `references/to-issue.md` |
-| 2, "refine", "groom" | `references/refine.md` |
-| 3, "plan", "sprint" | `references/plan.md` |
+| 1, "keyword-a" | `references/command-a.md` |
+| 2, "keyword-b" | `references/command-b.md` |
+| 3, "keyword-c" | `references/command-c.md` |
 </routing>
 ```
 
@@ -98,8 +98,8 @@ The `<reference_index>` tag replaces a flat markdown list with structured guidan
 
 | Reference | Purpose | Path |
 |-----------|---------|------|
-| sources | Lifecycle URLs per platform | `references/sources.md` |
-| auth | Token setup and curl patterns | `../rhdh-jira/references/auth.md` |
+| setup | Environment setup and prerequisites | `references/setup.md` |
+| patterns | Reusable patterns for common tasks | `references/patterns.md` |
 
 </reference_index>
 ```

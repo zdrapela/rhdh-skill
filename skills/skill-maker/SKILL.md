@@ -21,9 +21,9 @@ What do you need to do?
 
 | Response | Workflow |
 |----------|----------|
-| 1, "audit", "review", "check", "fix", "improve" | Follow the Audit Workflow below |
-| 2, "create", "write", "build", "new", "draft" | Follow Phases 1–5 below |
-| 3, "consolidate", "merge", "combine" | Read `references/consolidation-guide.md` and follow its workflow. Return to Phase 5 (Review) for the final checklist. |
+| 1, "audit", "review", "check", "fix", "improve" | Audit Workflow (Step 1–4 in this file) |
+| 2, "create", "write", "build", "new", "draft" | Phases 1–5 (Interview → Draft → Description → Scripts → Review) in this file |
+| 3, "consolidate", "merge", "combine" | `references/consolidation-guide.md` — return to Phase 5 for final checklist |
 
 </routing>
 
