@@ -16,28 +16,44 @@ description: >
 compatibility: "Node.js 22+, Yarn, podman or docker. Windows, macOS, Linux."
 ---
 
+<essential_principles>
+
 ## Prerequisites
 
 - Node.js 22+ and Yarn
 - Container runtime (`podman` or `docker`) for OCI packaging
 - Access to a container registry (e.g., quay.io) for publishing
 
-## Commands
+</essential_principles>
 
-| Command | Category | Description | Reference |
-|---------|----------|-------------|-----------|
-| `backend` | Create | Scaffold and implement a backend dynamic plugin | [references/backend.md](references/backend.md) |
-| `frontend` | Create | Scaffold and implement a frontend dynamic plugin | [references/frontend.md](references/frontend.md) |
-| `export` | Package | Export, package, and push a plugin for RHDH deployment | [references/export.md](references/export.md) |
-| `wiring` | Configure | Analyze a frontend plugin and generate wiring config | [references/wiring.md](references/wiring.md) |
+<intake>
+
+## What would you like to do?
+
+| # | Category | Command | Description |
+|---|----------|---------|-------------|
+| 1 | Create | `backend` | Scaffold and implement a backend dynamic plugin |
+| 2 | Create | `frontend` | Scaffold and implement a frontend dynamic plugin |
+| 3 | Package | `export` | Export, package, and push a plugin for RHDH deployment |
+| 4 | Configure | `wiring` | Analyze a frontend plugin and generate wiring config |
 
 Single source of truth for command descriptions: `scripts/command-metadata.json`
 
-### Routing rules
+**Wait for response before proceeding.**
 
-1. **No argument**: Show the command table. Ask what the user wants to do.
-2. **First word matches a command**: Load its reference file and follow it.
-3. **First word doesn't match**: Infer intent from context. "Create a new API plugin" → `backend`. "Package my plugin as OCI" → `export`. "Generate mount points" → `wiring`.
+</intake>
+
+<routing>
+
+| Response | Reference |
+|----------|----------|
+| 1, "backend", "create backend", "API plugin", "scaffolder action" | [references/backend.md](references/backend.md) |
+| 2, "frontend", "create frontend", "page", "card", "theme" | [references/frontend.md](references/frontend.md) |
+| 3, "export", "package", "OCI", "tgz", "publish", "push" | [references/export.md](references/export.md) |
+| 4, "wiring", "mount points", "routes", "entity tabs" | [references/wiring.md](references/wiring.md) |
+| First word doesn't match | Infer intent from context. "Create a new API plugin" → `backend`. "Package my plugin as OCI" → `export`. "Generate mount points" → `wiring`. |
+
+</routing>
 
 ## Shared Knowledge
 
@@ -83,6 +99,8 @@ The typical workflow chains these commands:
 
 Each reference file is self-contained. Load only the one you need.
 
+<reference_index>
+
 ## Reference Index
 
 ### Command References
@@ -110,6 +128,8 @@ Each reference file is self-contained. Load only the one you need.
 |------|----------|
 | `examples/dynamic-plugins.yaml` | Backend, frontend, multi-plugin, tgz, npm, and local config patterns |
 | `examples/frontend-wiring.yaml` | All frontend wiring patterns — tabs, cards, search, themes, scaffolder |
+
+</reference_index>
 
 ## Common Issues
 
