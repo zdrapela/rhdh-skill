@@ -49,7 +49,7 @@ def main(argv=None):
     root, is_remote = resolve_repo_root(args.repo_dir)
 
     # Print configured versions if test pattern provided
-    if args.test_pattern:
+    if args.test_pattern and not args.json_output:
         print_configured_versions(
             args.config_dir, args.test_pattern, root, is_remote, args.mapt_ref
         )

@@ -33,3 +33,7 @@ uv run scripts/check_rhdh_lifecycle.py --active-only
 | SUPPORTED_OCP | OCP versions this RHDH release officially supports |
 
 The `openshift_compatibility` field in the API is the authoritative source for which OCP versions each RHDH release supports.
+
+## Action
+
+Report the results. Use the per-release OCP support breakdown to identify which OCP versions are covered by active RHDH releases. This is the primary input for CI coverage decisions — compare with `check-ocp.md` output to spot gaps.

@@ -42,6 +42,22 @@ uv run scripts/check_lifecycle.py --list-products
 
 Any product name not in the alias list is passed to the API as-is.
 
+## Output
+
+| Column | Description |
+|--------|-------------|
+| VERSION | Product version (e.g., `26.2`, `3.15`) |
+| SUPPORTED | `yes` if the version is still active |
+| TYPE | Lifecycle type from the API (e.g., `Full Support`, `End of life`) |
+| GA_DATE | General Availability date |
+| END_DATE | Latest end-of-support date across all phases |
+
+With `--group-major` (RHBK): groups minor releases under major version summaries.
+
+## Action
+
+Report the results. If the user asked about a specific product version, highlight whether it is still supported and when support ends. No automated updates — this is informational only.
+
 ## RHBK Note
 
 Track **major versions only** (e.g., `26`). A major version is active if at least one of its minor releases is still supported. Use `--group-major` to see the summary.

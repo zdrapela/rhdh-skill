@@ -10,5 +10,4 @@ import sys
 from rhdh_prow.k8s_configs import main
 
 if __name__ == "__main__":
-    sys.argv = [sys.argv[0], "--pattern", "^e2e-eks-", *sys.argv[1:]]
-    main()
+    main(["--pattern", "^e2e-eks-", *sys.argv[1:]])

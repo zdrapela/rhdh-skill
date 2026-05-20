@@ -27,6 +27,10 @@ uv run scripts/check_ocp_lifecycle.py --version 4.16
 
 The **RHDH_SUPP** column is the key indicator for CI coverage decisions.
 
+## Action
+
+Report the results. If a version is OCP-supported but not RHDH-supported (`RHDH_SUPP = no`), flag it — this may indicate a CI coverage gap or a version that RHDH has intentionally dropped. Refer to the `prow` skill for CI job management if updates are needed.
+
 ## Key Concepts
 
 - **Full Support**: Actively supported, receives patches and security updates

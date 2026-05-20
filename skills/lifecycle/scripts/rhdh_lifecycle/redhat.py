@@ -18,6 +18,7 @@ import json
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 
 LIFECYCLE_API_URL = "https://access.redhat.com/product-life-cycles/api/v1/products"
@@ -75,7 +76,7 @@ def fetch_api(product_name):
 
     Returns the parsed JSON response, or None on failure.
     """
-    url = f"{LIFECYCLE_API_URL}?name={product_name.replace(' ', '+')}"
+    url = f"{LIFECYCLE_API_URL}?name={urllib.parse.quote_plus(product_name)}"
     req = urllib.request.Request(
         url, headers={"Accept": "application/json", "User-Agent": "rhdh-skill"}
     )

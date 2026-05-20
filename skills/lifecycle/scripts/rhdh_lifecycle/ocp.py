@@ -26,7 +26,10 @@ def classify_ocp_versions(api_data, today):
         List of dicts with keys: version, ocp_supported, phase,
         ga_date, end_of_support_date. Sorted by version.
     """
-    versions = api_data.get("data", [{}])[0].get("versions", [])
+    data_list = api_data.get("data", [])
+    if not data_list:
+        return []
+    versions = data_list[0].get("versions", [])
 
     # Keep only clean X.Y version names, skip variants like "4.6 EUS" or "3"
     versions = [v for v in versions if re.match(r"^\d+\.\d+$", v.get("name", ""))]

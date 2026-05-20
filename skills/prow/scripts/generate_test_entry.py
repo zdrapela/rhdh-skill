@@ -66,6 +66,9 @@ def main(argv=None):
 
     # Find reference entry
     if args.reference:
+        if not re.match(r"^\d+\.\d+$", args.reference):
+            print(f"ERROR: Reference must be in X.Y format, got: {args.reference}", file=sys.stderr)
+            sys.exit(1)
         ref_major, ref_minor = args.reference.split(".")
         ref_name = f"e2e-ocp-v{ref_major}-{ref_minor}-helm-nightly"
     else:
