@@ -12,7 +12,7 @@ Usage:
 
 import re
 
-from rhdh_lifecycle.redhat import is_date, to_date
+from rhdh_lifecycle.redhat import is_date, to_date, ver_sort_key
 
 
 def classify_ocp_versions(api_data, today):
@@ -100,5 +100,5 @@ def classify_ocp_versions(api_data, today):
         )
 
     # Sort by version
-    results.sort(key=lambda v: [int(x) for x in v["version"].split(".")])
+    results.sort(key=lambda v: ver_sort_key(v["version"]))
     return results

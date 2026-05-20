@@ -12,27 +12,13 @@ Usage:
 
 from __future__ import annotations
 
-import json
-import sys
-import urllib.error
-import urllib.request
+from rhdh_lifecycle.redhat import fetch_json
 
 PROVIDERS = {
     "upstream": "https://endoflife.date/api/postgresql.json",
     "rds": "https://endoflife.date/api/amazon-rds-postgresql.json",
     "azure": "https://endoflife.date/api/azure-database-for-postgresql.json",
 }
-
-
-def _fetch_json(url):
-    """Fetch JSON from a URL, return None on failure."""
-    req = urllib.request.Request(url, headers={"User-Agent": "rhdh-skill"})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except (urllib.error.URLError, OSError) as exc:
-        print(f"WARNING: Failed to fetch {url}: {exc}", file=sys.stderr)
-        return None
 
 
 def _normalize_eol(val):
@@ -56,7 +42,7 @@ def fetch_pg_lifecycle(today=None):
     # Fetch all providers
     provider_data = {}
     for provider, url in PROVIDERS.items():
-        data = _fetch_json(url)
+        data = fetch_json(url)
         if data:
             provider_data[provider] = {str(e["cycle"]): e for e in data}
         else:

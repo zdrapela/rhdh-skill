@@ -24,17 +24,13 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+from rhdh_prow import ver_sort_key
 from rhdh_prow.repo import resolve_repo_root
 from rhdh_prow.yaml import extract_branch, fetch_yaml, list_yaml_files
 
 POOL_DIR = "clusters/hosted-mgmt/hive/pools/rhdh"
 CI_CONFIG_DIR = "ci-operator/config/redhat-developer/rhdh"
 LIFECYCLE_API_URL = "https://access.redhat.com/product-life-cycles/api/v1/products"
-
-
-def ver_key(v):
-    """Sort key for version strings like '4.16'."""
-    return [int(x) for x in v.split(".")]
 
 
 def _fetch_lifecycle_json(script_name):
@@ -97,7 +93,7 @@ def _get_rhdh_lifecycle():
                 "ocp_versions": ocp_versions,
             }
         )
-    results.sort(key=lambda v: ver_key(v["version"]) if "." in v["version"] else [0])
+    results.sort(key=lambda v: ver_sort_key(v["version"]) if "." in v["version"] else [0])
     return results
 
 
@@ -166,7 +162,7 @@ def _get_ocp_lifecycle(today):
                 "phase": current_phase,
             }
         )
-    results.sort(key=lambda v: ver_key(v["version"]))
+    results.sort(key=lambda v: ver_sort_key(v["version"]))
     return results
 
 
@@ -228,7 +224,7 @@ def main(argv=None):
                 for t in data["tests"]
                 if t.get("cluster_claim", {}).get("version")
             },
-            key=ver_key,
+            key=ver_sort_key,
         )
         if versions:
             branch_versions[branch] = versions
@@ -236,7 +232,7 @@ def main(argv=None):
             print(f"  {branch}: {' '.join(versions)}")
     print()
 
-    unique_test_versions = sorted(set(all_test_versions), key=ver_key)
+    unique_test_versions = sorted(set(all_test_versions), key=ver_sort_key)
 
     # ------- 3. RHDH lifecycle -------
     print("--- RHDH Lifecycle ---")
@@ -254,7 +250,7 @@ def main(argv=None):
 
     rhdh_supported_ocp = sorted(
         {ocp for v in rhdh_data if v["supported"] for ocp in v.get("ocp_versions", [])},
-        key=ver_key,
+        key=ver_sort_key,
     )
     print()
     print(f"  OCP versions supported by active RHDH releases: {' '.join(rhdh_supported_ocp)}")
@@ -285,14 +281,14 @@ def main(argv=None):
 
     # Compute "main" branch OCP support
     if latest_rhdh_ocp:
-        max_rhdh = max(latest_rhdh_ocp, key=ver_key)
-        max_parts = ver_key(max_rhdh)
+        max_rhdh = max(latest_rhdh_ocp, key=ver_sort_key)
+        max_parts = ver_sort_key(max_rhdh)
         main_ocp = list(latest_rhdh_ocp)
         for ocp_ver in ocp_supported:
-            ocp_parts = ver_key(ocp_ver)
+            ocp_parts = ver_sort_key(ocp_ver)
             if ocp_parts > max_parts and ocp_ver not in main_ocp:
                 main_ocp.append(ocp_ver)
-        rhdh_branch_ocp["main"] = sorted(main_ocp, key=ver_key)
+        rhdh_branch_ocp["main"] = sorted(main_ocp, key=ver_sort_key)
 
     # ------- 5. OCP version matrix -------
     print("--- OCP Version Matrix ---")
@@ -306,7 +302,7 @@ def main(argv=None):
 
     all_relevant = sorted(
         set(pool_versions + unique_test_versions + rhdh_supported_ocp + ocp_supported),
-        key=ver_key,
+        key=ver_sort_key,
     )
 
     ocp_phase_map = {v["version"]: v for v in ocp_lifecycle}
@@ -379,7 +375,7 @@ def main(argv=None):
     print("--- RHDH-Supported OCP Versions Missing Pools (ADD) ---")
     all_rhdh_ocp = sorted(
         {ver for ocp_list in rhdh_branch_ocp.values() for ver in ocp_list},
-        key=ver_key,
+        key=ver_sort_key,
     )
     for ver in all_rhdh_ocp:
         if ver in ocp_eol:

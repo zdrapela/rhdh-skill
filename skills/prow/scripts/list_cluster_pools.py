@@ -11,6 +11,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from rhdh_prow import ver_sort_key
 from rhdh_prow.repo import resolve_repo_root
 from rhdh_prow.yaml import fetch_yaml, list_yaml_files
 
@@ -63,7 +64,7 @@ def main(argv=None):
         rows.append((ver, pool_name, size, max_size, running, image_set, filename))
 
     # Sort by version
-    rows.sort(key=lambda r: [int(x) for x in r[0].split(".")])
+    rows.sort(key=lambda r: ver_sort_key(r[0]))
     for ver, pool_name, size, max_size, running, image_set, filename in rows:
         print(
             f"  {ver:<8s}  {pool_name:<50s}  {size:<5s}  {max_size:<5s}  "

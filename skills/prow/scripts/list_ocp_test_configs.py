@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import sys
 
+from rhdh_prow import ver_sort_key
 from rhdh_prow.repo import resolve_repo_root
 from rhdh_prow.yaml import extract_branch, fetch_yaml, list_yaml_files
 
@@ -53,7 +54,7 @@ def main(argv=None):
         # Unique OCP versions
         versions = sorted(
             {t["cluster_claim"]["version"] for t in entries},
-            key=lambda v: [int(x) for x in v.split(".")],
+            key=ver_sort_key,
         )
 
         print()

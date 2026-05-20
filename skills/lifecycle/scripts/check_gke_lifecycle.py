@@ -15,22 +15,11 @@ in CI config. This script only reports available versions for reference.
 import argparse
 import json
 import sys
-import urllib.error
-import urllib.request
 from datetime import datetime, timezone
 
+from rhdh_lifecycle.redhat import fetch_json, ver_sort_key
+
 API_URL = "https://endoflife.date/api/google-kubernetes-engine.json"
-
-
-def fetch_api():
-    """Fetch GKE lifecycle data from endoflife.date."""
-    req = urllib.request.Request(API_URL, headers={"User-Agent": "rhdh-skill"})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except (urllib.error.URLError, OSError) as exc:
-        print(f"ERROR: Failed to fetch {API_URL}: {exc}", file=sys.stderr)
-        sys.exit(1)
 
 
 def is_supported(entry, today):
@@ -66,10 +55,12 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    data = fetch_api()
+    data = fetch_json(API_URL)
+    if not data:
+        sys.exit(1)
 
     supported = [e for e in data if is_supported(e, today)]
-    supported.sort(key=lambda e: [int(x) for x in e["cycle"].split(".")], reverse=True)
+    supported.sort(key=lambda e: ver_sort_key(e["cycle"]), reverse=True)
 
     if args.json_output:
         result = []

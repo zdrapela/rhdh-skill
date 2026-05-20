@@ -20,6 +20,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 from rhdh_lifecycle.configured_versions import print_configured_versions
+from rhdh_lifecycle.redhat import fetch_json, filter_supported_eol_entries
 from rhdh_lifecycle.repo import resolve_repo_root
 
 EKS_DOCS_URL = (
@@ -36,17 +37,6 @@ def fetch_text(url):
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             return resp.read().decode("utf-8")
-    except (urllib.error.URLError, OSError) as exc:
-        print(f"ERROR: Failed to fetch {url}: {exc}", file=sys.stderr)
-        return None
-
-
-def fetch_json(url):
-    """Fetch JSON from a URL."""
-    req = urllib.request.Request(url, headers={"User-Agent": "rhdh-skill"})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode("utf-8"))
     except (urllib.error.URLError, OSError) as exc:
         print(f"ERROR: Failed to fetch {url}: {exc}", file=sys.stderr)
         return None
@@ -125,23 +115,7 @@ def main(argv=None):
     # Cross-verify with endoflife.date
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     eol_data = fetch_json(EOL_API_URL)
-    eol_supported = []
-    if eol_data:
-        for entry in eol_data:
-            eol = entry.get("eol", "N/A")
-            ext = entry.get("extendedSupport", "N/A")
-            has_support = False
-            if eol == "N/A":
-                has_support = True
-            elif isinstance(eol, bool):
-                has_support = not eol
-            elif isinstance(eol, str) and eol > today:
-                has_support = True
-            if not has_support and isinstance(ext, str) and ext > today:
-                has_support = True
-            if has_support:
-                eol_supported.append(entry)
-        eol_supported.sort(key=lambda e: [int(x) for x in e["cycle"].split(".")], reverse=True)
+    eol_supported = filter_supported_eol_entries(eol_data, today) if eol_data else []
 
     # JSON output
     if args.json_output:
